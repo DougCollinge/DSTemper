@@ -25,6 +25,7 @@ class HelloWorld2:
         # This is a new call, which just sets the title of our
         # new window to "Hello Buttons!"
         self.window.set_title("Hello Buttons!")
+        self.window.set_default_size(100,100)
 
         # Here we just set a handler for delete_event that immediately
         # exits GTK.
@@ -36,39 +37,65 @@ class HelloWorld2:
         # We create a box to pack widgets into.  This is described in detail
         # in the "packing" section. The box is not really visible, it
         # is just used as a tool to arrange widgets.
-        self.box1 = gtk.HBox(False, 0)
+        # self.box1 = gtk.HBox(False, 0)
+        self.table1 = gtk.Table(5,4,True)
 
         # Put the box into the main window.
-        self.window.add(self.box1)
+        # self.window.add(self.box1)
+        # self.window.add(self.box1)
+        self.window.add(self.table1)
 
-        # Creates a new button with the label "Button 1".
-        self.button1 = gtk.Button("Button 1")
+        for irow in range(5):
+            labeln = gtk.Label(str(irow))
+            self.table1.attach(labeln,0,1,irow,irow+1,xoptions=gtk.SHRINK)
+            labeln.show()
 
-        # Now when the button is clicked, we call the "callback" method
-        # with a pointer to "button 1" as its argument
-        self.button1.connect("clicked", self.callback, "button 1")
+            labelsens = gtk.Label("SENSOR"+str(irow))
+            self.table1.attach_defaults(labelsens,1,2,irow,irow+1)
+            labelsens.show()
 
-        # Instead of add(), we pack this button into the invisible
-        # box, which has been packed into the window.
-        self.box1.pack_start(self.button1, True, True, 0)
+            textalias = gtk.Entry()
+            self.table1.attach_defaults(textalias,2,3,irow,irow+1)
+            textalias.show()
 
-        # Always remember this step, this tells GTK that our preparation for
-        # this button is complete, and it can now be displayed.
-        self.button1.show()
+            labeltemp = gtk.Label(str(irow+20))
+            self.table1.attach_defaults(labeltemp,3,4,irow,irow+1)
+            labeltemp.show()
 
-        # Do these same steps again to create a second button
-        self.button2 = gtk.Button("Button 2")
 
-        # Call the same callback method with a different argument,
-        # passing a pointer to "button 2" instead.
-        self.button2.connect("clicked", self.callback, "button 2")
 
-        self.box1.pack_start(self.button2, True, True, 0)
+        # # Creates a new button with the label "Button 1".
+        # self.button1 = gtk.Button("Button 1")
+        #
+        # # Now when the button is clicked, we call the "callback" method
+        # # with a pointer to "button 1" as its argument
+        # self.button1.connect("clicked", self.callback, "button 1")
+        #
+        # # Instead of add(), we pack this button into the invisible
+        # # box, which has been packed into the window.
+        # # self.box1.pack_start(self.button1, True, True, 0)
+        # self.table1.attach_defaults(self.button1,1, 2, 0, 1)
+        #
+        # # Always remember this step, this tells GTK that our preparation for
+        # # this button is complete, and it can now be displayed.
+        # self.button1.show()
+        #
+        # # Do these same steps again to create a second button
+        # self.button2 = gtk.Button("Button 2")
+        #
+        # # Call the same callback method with a different argument,
+        # # passing a pointer to "button 2" instead.
+        # self.button2.connect("clicked", self.callback, "button 2")
+        #
+        # # self.box1.pack_start(self.button2, True, True, 0)
+        # self.table1.attach_defaults(self.button2,1, 2, 1, 2)
+        #
+        # # The order in which we show the buttons is not really important, but I
+        # # recommend showing the window last, so it all pops up at once.
+        # self.button2.show()
+        # self.box1.show()
 
-        # The order in which we show the buttons is not really important, but I
-        # recommend showing the window last, so it all pops up at once.
-        self.button2.show()
-        self.box1.show()
+        self.table1.show()
         self.window.show()
 
 def main():
