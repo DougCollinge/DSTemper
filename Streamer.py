@@ -29,7 +29,10 @@ class TempBus:
         sleep(1.000)
         temps = []
         for thermometer in self.thermometers:
-            temps.append( thermometer.temperature )
+            if hasattr(thermometer,"temperature"):
+                temps.append( thermometer.temperature )
+            else:
+                temps.append( None )
         return temps
 
 host = 'localhost'
@@ -44,7 +47,7 @@ stream_ids = ["d7hhv34d32","jfh75d1vr1","tz0nz3779t","j359lsu1rh","vut4dqvvlz","
 # Make instance of stream id object
 streams = []
 traces = []
-npoints = 24*60*60
+npoints = 60*60
 
 for i in range(len(therms)):
     streams.append( Stream(
