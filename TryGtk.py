@@ -5,6 +5,7 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import pango
 
 class HelloWorld2:
 
@@ -24,7 +25,7 @@ class HelloWorld2:
 
         # This is a new call, which just sets the title of our
         # new window to "Hello Buttons!"
-        self.window.set_title("Hello Buttons!")
+        self.window.set_title("Tempermon")
         self.window.set_default_size(100,100)
 
         # Here we just set a handler for delete_event that immediately
@@ -33,6 +34,16 @@ class HelloWorld2:
 
         # Sets the border width of the window.
         self.window.set_border_width(10)
+
+        self.vbox1 = gtk.VBox()
+        self.window.add(self.vbox1)
+        self.vbox1.show()
+
+        labl = gtk.Label("Tempermon")
+        labl.set_justify(gtk.JUSTIFY_LEFT)
+        labl.modify_font( pango.FontDescription("OpenSans 30"))
+        self.vbox1.pack_start(labl)
+        labl.show()
 
         # We create a box to pack widgets into.  This is described in detail
         # in the "packing" section. The box is not really visible, it
@@ -43,7 +54,7 @@ class HelloWorld2:
         # Put the box into the main window.
         # self.window.add(self.box1)
         # self.window.add(self.box1)
-        self.window.add(self.table1)
+        self.vbox1.pack_start(self.table1)
 
         for irow in range(5):
             labeln = gtk.Label(str(irow))
