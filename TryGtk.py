@@ -7,7 +7,7 @@ pygtk.require('2.0')
 import gtk
 import pango
 
-class HelloWorld2:
+class DSTemper:
 
     # Our new improved callback.  The data passed to this method
     # is printed to stdout.
@@ -113,5 +113,5 @@ def main():
     gtk.main()
 
 if __name__ == "__main__":
-    hello = HelloWorld2()
+    hello = DSTemper()
     main()

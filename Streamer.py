@@ -7,39 +7,12 @@ import time
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
-
-from time import sleep, strftime
-import ownet
-
-class TempBus:
-    def __init__(self,host,port):
-        self.connection = ownet.Connection(host,port)
-
-    def thermometers(self):
-        r = ownet.Sensor('/', host, port)
-        sensors = r.sensorList()
-        self.thermometers = []
-        for sensor in sensors:
-            if hasattr(sensor,'family'):
-                if sensor.family == 10 or sensor.family == 28:
-                    self.thermometers.append(sensor)
-        return self.thermometers
-
-    def temperatures(self):
-        self.connection.write('/simultaneous/temperature',1)
-        sleep(1.000)
-        temps = []
-        for thermometer in self.thermometers:
-            if hasattr(thermometer,"temperature"):
-                temps.append( thermometer.temperature )
-            else:
-                temps.append( None )
-        return temps
+from ThermometerBus import ThermometerBus
 
 host = 'localhost'
 port = 4304
 
-bus = TempBus(host,port)
+bus = ThermometerBus(host,port)
 therms = bus.thermometers()
 logging.debug("Number of thermometers:%d",len(therms))
 
@@ -73,17 +46,22 @@ data = Data(traces)
 # Add title to layout object
 layout = Layout(
     title='Thermolog',
+    yaxis={
+        "range":[0,40],
+        "type":"linear",
+        "title":"Temperature (C)",
+        "autorange":False,
+        "gridcolor":"rgb(204, 204, 204)",
+        "tickmode":"linear",
+        "dtick":1,
+        "side":"right"
+    },
     xaxis={
         "title":"Time",
         "type":"date",
         "autorange":True,
         "tickangle":90
     },
-    yaxis={
-        "title":"Temperature (C)",
-        "type":"linear",
-        "range":[0,100]
-    }
 )
 
 # Make a figure object
