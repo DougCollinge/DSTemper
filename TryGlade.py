@@ -1,4 +1,6 @@
 import gi
+from time import sleep
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
@@ -12,7 +14,20 @@ from gi.repository import Gtk
 builder = Gtk.Builder()
 builder.add_from_file("TryGlade.glade")
 # builder.connect_signals(Handler())
-window = builder.get_object("window1")
-window.show_all()
+window = builder.get_object("mainwindow")
 
+labelsensornumbers = []
+for isens in range(3):
+    sensorgui = Gtk.Builder()
+    sensorgui.add_from_file("TryGladeSensor.glade")
+    sensorframe = sensorgui.get_object("sensorframe")
+    labelsensornumber = sensorgui.get_object("labelsensornumber")
+    labelsensornumbers.append(labelsensornumber)
+    labelsensornumber.set_label("Sensor "+str(isens))
+    sensorframe.set_name("sensorframe"+str(isens))
+
+    hboxgui = builder.get_object("box2")
+    hboxgui.pack_start(sensorframe, False, True, 0)
+
+window.show_all()
 Gtk.main()

@@ -25,8 +25,8 @@ class DSTemper:
 
         # This is a new call, which just sets the title of our
         # new window to "Hello Buttons!"
-        self.window.set_title("Tempermon")
-        self.window.set_default_size(100,100)
+        self.window.set_title("DSTemper")
+        self.window.set_default_size(400,700)
 
         # Here we just set a handler for delete_event that immediately
         # exits GTK.
@@ -39,9 +39,16 @@ class DSTemper:
         self.window.add(self.vbox1)
         self.vbox1.show()
 
-        labl = gtk.Label("Tempermon")
-        labl.set_justify(gtk.JUSTIFY_LEFT)
-        labl.modify_font( pango.FontDescription("OpenSans 30"))
+        labl = gtk.Label()
+        labl.set_markup("<span size='20000' style='italic' weight='bold'>DSTemper</span>")
+        # labl.set_justify(gtk.JUSTIFY_LEFT)
+        # alist = pango.AttrList();
+        # alist.insert(pango.AttrSize(22000,0,-1))
+        # alist.insert(pango.AttrStyle(pango.ATTR_WEIGHT,pango.WEIGHT_ULTRABOLD,0,-1))
+        # alist.insert(pango.AttrStyle(pango.ATTR_STYLE,pango.STYLE_ITALIC,0,-1))
+        # labl.set_attributes(alist)
+        # labl.modify_font( pango.FontDescription("OpenSans 30"))
+        labl.set_alignment('left')
         self.vbox1.pack_start(labl)
         labl.show()
 
