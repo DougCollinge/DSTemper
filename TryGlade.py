@@ -21,13 +21,13 @@ for isens in range(3):
     sensorgui = Gtk.Builder()
     sensorgui.add_from_file("TryGladeSensor.glade")
     sensorframe = sensorgui.get_object("sensorframe")
-    labelsensornumber = sensorgui.get_object("labelsensornumber")
+    labelsensornumber = sensorgui.get_object("countlabel")
     labelsensornumbers.append(labelsensornumber)
-    labelsensornumber.set_label("Sensor "+str(isens))
+    labelsensornumber.set_label( str(isens) )
     sensorframe.set_name("sensorframe"+str(isens))
 
-    hboxgui = builder.get_object("box2")
-    hboxgui.pack_start(sensorframe, False, True, 0)
+    boxgui = builder.get_object("sensorsbox")
+    boxgui.pack_start(sensorframe, False, True, 0)
 
 window.show_all()
 Gtk.main()
