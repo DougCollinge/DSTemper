@@ -15,6 +15,7 @@ builder = Gtk.Builder()
 builder.add_from_file("TryGlade.glade")
 # builder.connect_signals(Handler())
 window = builder.get_object("mainwindow")
+window.connect("destroy", lambda x: Gtk.main_quit())
 
 labelsensornumbers = []
 for isens in range(3):
