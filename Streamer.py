@@ -85,7 +85,7 @@ time.sleep(5)
 i = 0    # a counter
 while i<N:
     i += 1   # add to counter
-    temps = bus.temperatures()
+    temps = bus.simultaneousTemperatures()
     gnow = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
     for j in range(len(temps)):
         # Current time on x-axis, random numbers on y-axis
