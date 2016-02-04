@@ -12,7 +12,7 @@ from gi.repository import Gtk
 #         print("Hello World!")
 
 builder = Gtk.Builder()
-builder.add_from_file("TryGlade.glade")
+builder.add_from_file("DSTemperMain.glade")
 # builder.connect_signals(Handler())
 window = builder.get_object("mainwindow")
 window.connect("destroy", lambda x: Gtk.main_quit())
@@ -20,7 +20,7 @@ window.connect("destroy", lambda x: Gtk.main_quit())
 labelsensornumbers = []
 for isens in range(3):
     sensorgui = Gtk.Builder()
-    sensorgui.add_from_file("TryGladeSensor.glade")
+    sensorgui.add_from_file("DSTemperThermometer.glade")
     sensorframe = sensorgui.get_object("sensorframe")
     labelsensornumber = sensorgui.get_object("countlabel")
     labelsensornumbers.append(labelsensornumber)
