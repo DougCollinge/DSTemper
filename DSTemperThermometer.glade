@@ -74,12 +74,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label7">
+              <object class="GtkLabel" id="sensorIdLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin_left">5</property>
                 <property name="label" translatable="yes">XXXXXXXXXXXX</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                  <attribute name="stretch" value="condensed"/>
+                  <attribute name="scale" value="1"/>
+                </attributes>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -117,6 +122,44 @@
                 <property name="top_attach">0</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkLabel" id="label2">
+                <property name="width_request">66</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Type:</property>
+                <property name="ellipsize">start</property>
+                <property name="max_width_chars">2</property>
+                <property name="track_visited_links">False</property>
+                <property name="xalign">0.059999998658895493</property>
+                <attributes>
+                  <attribute name="weight" value="ultrabold"/>
+                  <attribute name="scale" value="1.5"/>
+                  <attribute name="foreground" value="#000000000000"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="sensorTypeLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">XXXXXXXXXXXX</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                  <attribute name="stretch" value="condensed"/>
+                  <attribute name="scale" value="1"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
             <style>
               <class name="border: 5px solid red;"/>
             </style>
@@ -128,7 +171,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="labeltemp">
+          <object class="GtkLabel" id="sensorTemperatureLabel">
             <property name="width_request">500</property>
             <property name="visible">True</property>
             <property name="sensitive">False</property>
