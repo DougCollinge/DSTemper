@@ -25,10 +25,10 @@ thermometers = tbus.thermometers()
 
 builder = Gtk.Builder()
 builder.add_from_file("DSTemperMain.glade")
+dateTimeLabel = builder.get_object("dateTimeLabel")
 # builder.connect_signals(Handler())
 window = builder.get_object("mainwindow")
 window.connect("destroy", lambda x: Gtk.main_quit())
-
 
 labelsensornumbers = []
 temperaturelabels = []
@@ -58,8 +58,8 @@ def sampleTemperature():
     GLib.timeout_add(2000, sampleTemperature )
 
     temps = tbus.simultaneousTemperatures()
-    gnow = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
-    print gnow
+    gnow = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    dateTimeLabel.set_label( gnow )
     for isens in range(len(temps)):
         ntemp = temps[isens]
         stemp = "{0:6.2f}".format(ntemp)
