@@ -52,7 +52,10 @@ for isens in range(len(thermometers)):
     boxgui = builder.get_object("sensorsbox")
     boxgui.pack_start(sensorframe, False, True, 0)
 
-    temperaturelabels.append( sensorgui.get_object("sensorTemperatureLabel") )
+
+    sensorTemperatureLabel = sensorgui.get_object("sensorTemperatureLabel")
+    temperaturelabels.append( sensorTemperatureLabel )
+
 
 def sampleTemperature():
     GLib.timeout_add(2000, sampleTemperature )

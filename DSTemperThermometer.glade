@@ -181,7 +181,7 @@
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
-            <property name="label" translatable="yes">99.99</property>
+            <property name="label" translatable="yes">--.--</property>
             <property name="justify">center</property>
             <property name="ellipsize">start</property>
             <property name="width_chars">6</property>
@@ -190,7 +190,7 @@
             <property name="lines">1</property>
             <property name="xalign">1</property>
             <attributes>
-              <attribute name="scale" value="8"/>
+              <attribute name="scale" value="6"/>
               <attribute name="foreground" value="#000000000000"/>
               <attribute name="background" value="#eeeeeeeeecec"/>
             </attributes>
