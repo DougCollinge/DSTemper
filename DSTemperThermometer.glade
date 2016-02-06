@@ -145,7 +145,6 @@
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <property name="label" translatable="yes">12.30</property>
-            <property name="justify">center</property>
             <property name="ellipsize">start</property>
             <property name="width_chars">6</property>
             <property name="single_line_mode">True</property>
@@ -154,6 +153,7 @@
             <property name="xalign">1</property>
             <attributes>
               <attribute name="font-desc" value="Droid Sans Mono Bold 69"/>
+              <attribute name="foreground" value="#000000000000"/>
               <attribute name="size" value="70000"/>
             </attributes>
           </object>
