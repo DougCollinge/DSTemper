@@ -4,7 +4,7 @@
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkFrame" id="sensorframe">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can_focus">True</property>
     <property name="label_xalign">0</property>
     <child>
       <object class="GtkBox" id="box1">
@@ -144,7 +144,7 @@
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
-            <property name="label" translatable="yes">12.30</property>
+            <property name="label" translatable="yes">  .  </property>
             <property name="ellipsize">start</property>
             <property name="width_chars">6</property>
             <property name="single_line_mode">True</property>

@@ -13,6 +13,10 @@ from gi.repository import Gtk
 host = 'localhost'
 port = 4304
 
+settings = {
+    "samplePeriod": 2.3
+}
+
 # class Handler:
 #     def onDeleteWindow(self, *args):
 #         Gtk.main_quit(*args)
@@ -56,21 +60,47 @@ for isens in range(len(thermometers)):
     sensorTemperatureLabel = sensorgui.get_object("sensorTemperatureLabel")
     temperaturelabels.append( sensorTemperatureLabel )
 
+def on_periodSpinButton_value_changed(src):
+    settings["samplePeriod"] = src.get_value()
+
+def on_enableCheckButton_toggled(src):
+    if src.get_active() :
+        print "not active"
+        sampleTemperature()
+
+builder.get_object("periodSpinButton").set_value(settings["samplePeriod"])
+builder.connect_signals(
+    {
+        'on_periodSpinButton_value_changed': (on_periodSpinButton_value_changed),
+        'on_enableCheckButton_toggled': (on_enableCheckButton_toggled)
+    }
+)
+
+
 
 def sampleTemperature():
-    GLib.timeout_add(2000, sampleTemperature )
+    checkbutton = builder.get_object("enableCheckButton")
+    if not checkbutton.get_active() :
+        return False
+    GLib.timeout_add_seconds(settings["samplePeriod"], sampleTemperature )
+    print settings["samplePeriod"]
 
     temps = tbus.simultaneousTemperatures()
     gnow = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     dateTimeLabel.set_label( gnow )
     for isens in range(len(temps)):
         ntemp = temps[isens]
-        stemp = "{0:6.2f}".format(ntemp)
+        if ntemp != None :
+            stemp = "{0:6.2f}".format(ntemp)
+        else :
+            stemp = "---.--"
+        # print stemp
         temperaturelabels[isens].set_label( stemp )
         temperaturelabels[isens].queue_draw()
 
 
-GLib.timeout_add(2000, sampleTemperature )
+
+# sampleTemperature()
 window.show_all()
 
 Gtk.main()
