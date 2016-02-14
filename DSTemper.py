@@ -3,9 +3,11 @@ from gi.repository import GObject
 from gi.repository import GLib
 from time import sleep
 import datetime
+import os
 
 import ownet
 from ThermometerBus import ThermometerBus
+from DSSettings import DSSettings
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -13,9 +15,9 @@ from gi.repository import Gtk
 host = 'localhost'
 port = 4304
 
-settings = {
-    "samplePeriod": 2.3
-}
+# settings = {
+#     "samplePeriod": 2.3
+# }
 
 # class Handler:
 #     def onDeleteWindow(self, *args):
@@ -61,14 +63,13 @@ for isens in range(len(thermometers)):
     temperaturelabels.append( sensorTemperatureLabel )
 
 def on_periodSpinButton_value_changed(src):
-    settings["samplePeriod"] = src.get_value()
+    settings.set("samplePeriod", src.get_value())
 
 def on_enableCheckButton_toggled(src):
     if src.get_active() :
-        print "not active"
+        # print "not active"
         sampleTemperature()
 
-builder.get_object("periodSpinButton").set_value(settings["samplePeriod"])
 builder.connect_signals(
     {
         'on_periodSpinButton_value_changed': (on_periodSpinButton_value_changed),
@@ -82,8 +83,7 @@ def sampleTemperature():
     checkbutton = builder.get_object("enableCheckButton")
     if not checkbutton.get_active() :
         return False
-    GLib.timeout_add_seconds(settings["samplePeriod"], sampleTemperature )
-    print settings["samplePeriod"]
+    GLib.timeout_add_seconds(settings.get("samplePeriod"), sampleTemperature )
 
     temps = tbus.simultaneousTemperatures()
     gnow = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -99,6 +99,8 @@ def sampleTemperature():
         temperaturelabels[isens].queue_draw()
 
 
+settings = DSSettings(os.path.expanduser("~/.DSTemper.settings"))
+builder.get_object("periodSpinButton").set_value( settings.get("samplePeriod") )
 
 # sampleTemperature()
 window.show_all()
