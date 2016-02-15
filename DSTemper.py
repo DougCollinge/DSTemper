@@ -8,6 +8,7 @@ import os
 import ownet
 from ThermometerBus import ThermometerBus
 from DSSettings import DSSettings
+from DSFileLogger import DSFileLogger
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -101,6 +102,13 @@ def sampleTemperature():
 
 settings = DSSettings(os.path.expanduser("~/.DSTemper.settings"))
 builder.get_object("periodSpinButton").set_value( settings.get("samplePeriod") )
+
+headers = []
+for therm in thermometers :
+    headers.append( therm.id )
+
+flogger = DSFileLogger("DSTemperlog.csv",headers)
+
 
 # sampleTemperature()
 window.show_all()

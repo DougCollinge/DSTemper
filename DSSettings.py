@@ -24,7 +24,7 @@ class DSSettings:
             fp.close()
 
     def set(self,name,value):
-        print "set {} to {}:",name,value
+        # print "set {} to {}:",name,value
         self.settings[name] = value
         self.dump()
 
