@@ -71,10 +71,18 @@ def on_enableCheckButton_toggled(src):
         # print "not active"
         sampleTemperature()
 
+def on_loggingEnabledCheckButton_toggled(src):
+    flogger.set_enabled(src.get_active())
+
+def on_loggingFileChooserButton_file_set(src):
+    flogger.set_fpath(src.get_value())
+
 builder.connect_signals(
     {
         'on_periodSpinButton_value_changed': (on_periodSpinButton_value_changed),
-        'on_enableCheckButton_toggled': (on_enableCheckButton_toggled)
+        'on_enableCheckButton_toggled': (on_enableCheckButton_toggled),
+        'on_loggingEnabledCheckButton_toggled': (on_loggingEnabledCheckButton_toggled),
+        'on_loggingFileChooserButton_file_set': (on_loggingFileChooserButton_file_set)
     }
 )
 

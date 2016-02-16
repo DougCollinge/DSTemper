@@ -297,6 +297,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
+                    <property name="action">save</property>
+                    <property name="preview_widget_active">False</property>
                     <signal name="file-set" handler="on_loggingFileChooserButton_file_set" swapped="no"/>
                   </object>
                   <packing>
@@ -305,19 +307,15 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
+                  <object class="GtkFileChooserWidget" id="filechooserwidget2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="action">save</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>
