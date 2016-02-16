@@ -1,3 +1,4 @@
+import ownet
 from time import sleep, strftime
 
 class ThermometerBus:

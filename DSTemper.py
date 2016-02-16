@@ -8,8 +8,9 @@ from gi.repository import GLib
 from time import sleep
 
 fake = False
-if sys.argv[1] == "--fake" :
-    fake = True
+for arg in sys.argv :
+    if arg == "--fake" :
+        fake = True
 
 if fake:
     from FakeThermometerBus import ThermometerBus
