@@ -4,6 +4,8 @@ class DSFileLogger :
     def __init__(self,fpath,headers):
         self.fpath = fpath
         self.file = None
+        self.enabled = False
+
         if os.path.isfile(fpath) :
             self.file = open(fpath,"w+")
         else :
@@ -14,6 +16,8 @@ class DSFileLogger :
                 self.file.write(", " + hdr)
 
     def log(self,temps) :
+        if not self.enabled :
+            return
         temp = temps.pop(0)
         self.file.write(str(temp))
         for temp in temps :
@@ -21,3 +25,9 @@ class DSFileLogger :
 
     def close(self):
         self.file.close()
+
+    def set_enabled(self,enabled):
+        self.enabled = enabled
+
+    def set_fpath(self,fpath):
+        self.fpath = fpath
