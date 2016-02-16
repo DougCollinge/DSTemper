@@ -29,9 +29,11 @@ class ThermometerBus:
         #             self.thermometers.append(sensor)
         return self.thermometers
 
-    def simultaneousTemperatures(self):
+    def simultaneous(self):
+        return
+
+    def temperatures(self):
         # self.connection.write('/simultaneous/temperature',1)
-        sleep(1.000)
         temps = []
         for thermometer in self.thermometers:
             if hasattr(thermometer, "temperature"):
