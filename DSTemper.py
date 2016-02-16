@@ -1,12 +1,21 @@
+import datetime
+import os
+import sys
+
 import gi
 from gi.repository import GObject
 from gi.repository import GLib
 from time import sleep
-import datetime
-import os
 
-import ownet
-from ThermometerBus import ThermometerBus
+fake = False
+if sys.argv[1] == "--fake" :
+    fake = True
+
+if fake:
+    from FakeThermometerBus import ThermometerBus
+else:
+    from ThermometerBus import ThermometerBus
+
 from DSSettings import DSSettings
 from DSFileLogger import DSFileLogger
 
@@ -74,15 +83,15 @@ def on_enableCheckButton_toggled(src):
 def on_loggingEnabledCheckButton_toggled(src):
     flogger.set_enabled(src.get_active())
 
-def on_loggingFileChooserButton_file_set(src):
-    flogger.set_fpath(src.get_value())
+def on_loggingfileentry_activate(src):
+    settings.set("loggingFileName", src.get_text())
 
 builder.connect_signals(
     {
         'on_periodSpinButton_value_changed': (on_periodSpinButton_value_changed),
         'on_enableCheckButton_toggled': (on_enableCheckButton_toggled),
         'on_loggingEnabledCheckButton_toggled': (on_loggingEnabledCheckButton_toggled),
-        'on_loggingFileChooserButton_file_set': (on_loggingFileChooserButton_file_set)
+        'on_loggingfileentry_activate': on_loggingfileentry_activate
     }
 )
 
@@ -94,7 +103,7 @@ def sampleTemperature():
         return False
     GLib.timeout_add_seconds(settings.get("samplePeriod"), sampleTemperature )
 
-    temps = tbus.simultaneousTemperatures()
+    temps = tbus.temperatures()
     gnow = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     dateTimeLabel.set_label( gnow )
     for isens in range(len(temps)):
@@ -107,8 +116,12 @@ def sampleTemperature():
         temperaturelabels[isens].set_label( stemp )
         temperaturelabels[isens].queue_draw()
 
+    tbus.simultaneous()
 
-settings = DSSettings(os.path.expanduser("~/.DSTemper.settings"))
+
+settingsfile = os.path.expanduser("~.DSTemper.settings")
+print settingsfile
+settings = DSSettings(settingsfile)
 builder.get_object("periodSpinButton").set_value( settings.get("samplePeriod") )
 
 headers = []

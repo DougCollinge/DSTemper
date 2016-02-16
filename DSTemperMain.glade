@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
-  <object class="GtkFileChooserDialog" id="filechooserdialog2">
+  <!-- interface-requires gtk+ 3.12 -->
+  <object class="GtkFileChooserDialog" id="loggingfilechooserdialog">
     <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="role">GtkFileChooserDialog</property>
     <property name="type_hint">dialog</property>
     <property name="action">save</property>
     <child internal-child="vbox">
-      <object class="GtkBox" id="filechooserdialog-vbox2">
+      <object class="GtkBox" id="filechooserdialog-vbox1">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="filechooserdialog-action_area2">
+          <object class="GtkButtonBox" id="filechooserdialog-action_area1">
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
@@ -24,7 +26,8 @@
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="fill">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
@@ -285,6 +288,8 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
@@ -302,6 +307,8 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">1</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
@@ -322,26 +329,29 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkFileChooserButton" id="loggingFileChooserButton">
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="loggingfileentry">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="hexpand">True</property>
-                    <property name="dialog">filechooserdialog2</property>
-                    <signal name="file-set" handler="on_loggingFileChooserButton_file_set" swapped="no"/>
+                    <property name="can_focus">True</property>
+                    <property name="invisible_char">●</property>
+                    <signal name="activate" handler="on_loggingfileentry_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">2</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
