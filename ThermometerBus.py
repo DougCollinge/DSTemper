@@ -1,5 +1,4 @@
 from time import sleep, strftime
-import ownet
 
 class ThermometerBus:
     def __init__(self,host,port):

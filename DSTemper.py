@@ -1,12 +1,21 @@
+import datetime
+import os
+import sys
+
 import gi
 from gi.repository import GObject
 from gi.repository import GLib
 from time import sleep
-import datetime
-import os
 
-import ownet
-from ThermometerBus import ThermometerBus
+fake = False
+if sys.argv[1] == "--fake" :
+    fake = True
+
+if fake:
+    from FakeThermometerBus import ThermometerBus
+else:
+    from ThermometerBus import ThermometerBus
+
 from DSSettings import DSSettings
 from DSFileLogger import DSFileLogger
 
