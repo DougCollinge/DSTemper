@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
+  <!-- interface-requires gtk+ 3.12 -->
   <object class="GtkFrame" id="sensorframe">
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="label_xalign">0</property>
+    <property name="shadow_type">in</property>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -15,19 +15,20 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="row_homogeneous">True</property>
+            <style>
+              <class name="border: 5px solid red;"/>
+            </style>
             <child>
               <object class="GtkLabel" id="label14">
-                <property name="width_request">66</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">5</property>
+                <property name="xalign">0</property>
                 <property name="xpad">5</property>
                 <property name="label" translatable="yes">Alias:</property>
                 <property name="single_line_mode">True</property>
                 <property name="track_visited_links">False</property>
-                <property name="xalign">0</property>
                 <attributes>
-                  <attribute name="weight" value="ultrabold"/>
+                  <attribute name="weight" value="bold"/>
                   <attribute name="scale" value="1.5"/>
                   <attribute name="foreground" value="#000000000000"/>
                 </attributes>
@@ -35,6 +36,8 @@
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">1</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
               </packing>
             </child>
             <child>
@@ -48,18 +51,20 @@
               <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">1</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkLabel" id="label12">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="xalign">0</property>
                 <property name="xpad">5</property>
                 <property name="label" translatable="yes">ID:</property>
                 <property name="single_line_mode">True</property>
-                <property name="xalign">0</property>
                 <attributes>
-                  <attribute name="weight" value="ultrabold"/>
+                  <attribute name="weight" value="bold"/>
                   <attribute name="scale" value="1.5"/>
                   <attribute name="foreground" value="#000000000000"/>
                 </attributes>
@@ -67,6 +72,8 @@
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
               </packing>
             </child>
             <child>
@@ -79,12 +86,14 @@
                 <attributes>
                   <attribute name="weight" value="bold"/>
                   <attribute name="stretch" value="condensed"/>
-                  <attribute name="scale" value="1"/>
+                  <attribute name="scale" value="1.5"/>
                 </attributes>
               </object>
               <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">0</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
               </packing>
             </child>
             <child>
@@ -92,14 +101,14 @@
                 <property name="width_request">66</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="xalign">0</property>
                 <property name="xpad">5</property>
                 <property name="label" translatable="yes">Type:</property>
                 <property name="ellipsize">start</property>
                 <property name="single_line_mode">True</property>
                 <property name="track_visited_links">False</property>
-                <property name="xalign">0</property>
                 <attributes>
-                  <attribute name="weight" value="ultrabold"/>
+                  <attribute name="weight" value="bold"/>
                   <attribute name="scale" value="1.5"/>
                   <attribute name="foreground" value="#000000000000"/>
                 </attributes>
@@ -107,6 +116,8 @@
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">2</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
               </packing>
             </child>
             <child>
@@ -118,17 +129,16 @@
                 <attributes>
                   <attribute name="weight" value="bold"/>
                   <attribute name="stretch" value="condensed"/>
-                  <attribute name="scale" value="1"/>
+                  <attribute name="scale" value="1.5"/>
                 </attributes>
               </object>
               <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">2</property>
+                <property name="width">1</property>
+                <property name="height">1</property>
               </packing>
             </child>
-            <style>
-              <class name="border: 5px solid red;"/>
-            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -144,13 +154,12 @@
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
+            <property name="xalign">1</property>
             <property name="label" translatable="yes">  .  </property>
             <property name="ellipsize">start</property>
             <property name="width_chars">6</property>
             <property name="single_line_mode">True</property>
             <property name="max_width_chars">6</property>
-            <property name="lines">1</property>
-            <property name="xalign">1</property>
             <attributes>
               <attribute name="font-desc" value="Droid Sans Mono Bold 69"/>
               <attribute name="foreground" value="#000000000000"/>
