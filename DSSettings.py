@@ -13,7 +13,7 @@ class DSSettings:
             self.settings = {
                 "samplePeriod": 2,
                 "loggingEnabled": False,
-                "loggingFilePath": None
+                "loggingFileName": None
             }
             self.dump()
 

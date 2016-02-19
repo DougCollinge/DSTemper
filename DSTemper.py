@@ -107,7 +107,8 @@ def sampleTemperature():
     temps = tbus.temperatures()
     tbus.simultaneous()
     gnow = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    flogger.log(gnow,temps)
+    if flogger != None :
+        flogger.log(gnow,temps)
     dateTimeLabel.set_label( gnow )
     for isens in range(len(temps)):
         ntemp = temps[isens]
@@ -121,17 +122,20 @@ def sampleTemperature():
 
 
 
-settingsfile = os.path.expanduser("~.DSTemper.settings")
+settingsfile = os.path.expanduser("~/.DSTemper.settings")
 print settingsfile
 settings = DSSettings(settingsfile)
 builder.get_object("periodSpinButton").set_value( settings.get("samplePeriod") )
-builder.get_object("loggingfileentry").set_text( settings.get("loggingFileName"))
+
+fn = settings.get("loggingFileName")
+builder.get_object("loggingfileentry").set_text( fn if fn != None else "" )
 
 headers = []
 for therm in thermometers :
     headers.append( therm.id )
 
-flogger = DSFileLogger(settings.get("loggingFileName"),headers)
+if fn != None :
+    flogger = DSFileLogger(fn,headers)
 
 
 # sampleTemperature()
