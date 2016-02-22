@@ -125,6 +125,10 @@ def sampleTemperature():
 settingsfile = os.path.expanduser("~/.DSTemper.settings")
 print settingsfile
 settings = DSSettings(settingsfile)
+settings.default("samplePeriod", 2)
+settings.default("loggingEnabled", False)
+settings.default("loggingFileName", None)
+
 builder.get_object("periodSpinButton").set_value( settings.get("samplePeriod") )
 
 fn = settings.get("loggingFileName")

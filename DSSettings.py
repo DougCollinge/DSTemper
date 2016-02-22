@@ -10,12 +10,11 @@ class DSSettings:
             self.settings = json.load(fp)
             fp.close()
         else :
-            self.settings = {
-                "samplePeriod": 2,
-                "loggingEnabled": False,
-                "loggingFileName": None
-            }
-            self.dump()
+            self.settings = {}
+
+    def default(self,name,value):
+        if not name in self.settings :
+            self.set(name,value)
 
     def dump(self):
         fp = open(self.settingsPath,"w")
@@ -29,7 +28,10 @@ class DSSettings:
         self.dump()
 
     def get(self,name):
-        return self.settings[name]
+        if name in self.settings :
+            return self.settings[name]
+        else :
+            return None
 
 # setz = DSSettings(os.path.expanduser("~/.DSTemper.settings"))
 #
