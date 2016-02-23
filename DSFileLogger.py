@@ -1,19 +1,22 @@
 import os
 
 class DSFileLogger :
-    def __init__(self,fpath,headers):
-        self.fpath = fpath
-        self.headers = headers
+    def __init__(self,settings):
+        self.settings = settings
 
         self.file = None
         self.enabled = False
-        self.headerLineWritten = False
-
         self.headerLineWritten = os.path.isfile(fpath)
 
+    def set_headers(self,headers):
+        self.headers = headers
 
     def log(self, datetime, temps) :
         if not self.enabled :
+            return
+
+        fpath = headers.get("loggingFileName")
+        if fpath == None :
             return
 
         if self.headerLineWritten :
