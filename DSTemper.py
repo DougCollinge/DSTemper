@@ -124,10 +124,11 @@ def sampleTemperature():
 
 settingsfile = os.path.expanduser("~/.DSTemper.settings")
 print settingsfile
+
 settings = DSSettings(settingsfile)
 settings.default("samplePeriod", 2)
-settings.default("loggingEnabled", False)
-settings.default("loggingFileName", None)
+# settings.default("loggingEnabled", False)
+# settings.default("loggingFileName", None)
 
 builder.get_object("periodSpinButton").set_value( settings.get("samplePeriod") )
 
@@ -139,7 +140,8 @@ for therm in thermometers :
     headers.append( therm.id )
 
 if fn != None :
-    flogger = DSFileLogger(fn,headers)
+    flogger = DSFileLogger(settings)
+    flogger.set_headers(headers)
 
 
 # sampleTemperature()

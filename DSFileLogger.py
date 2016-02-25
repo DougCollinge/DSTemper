@@ -6,7 +6,7 @@ class DSFileLogger :
 
         self.file = None
         self.enabled = False
-        self.headerLineWritten = os.path.isfile(fpath)
+        # self.headerLineWritten = os.path.isfile(fpath)
 
     def set_headers(self,headers):
         self.headers = headers
@@ -19,6 +19,7 @@ class DSFileLogger :
         if fpath == None :
             return
 
+        self.headerLineWritten = os.path.isfile(fpath)
         if self.headerLineWritten :
             self.file = open(self.fpath,"a")
         else :
