@@ -15,15 +15,15 @@ class DSFileLogger :
         if not self.enabled :
             return
 
-        fpath = headers.get("loggingFileName")
+        fpath = self.settings.get("loggingFileName")
         if fpath == None :
             return
 
         self.headerLineWritten = os.path.isfile(fpath)
         if self.headerLineWritten :
-            self.file = open(self.fpath,"a")
+            self.file = open(fpath,"a")
         else :
-            self.file = open(self.fpath,"w")
+            self.file = open(fpath,"w")
             self.file.write("DateTime")
             # hdr = headers.pop(0)
             # self.file.write(hdr)
